@@ -1,35 +1,19 @@
-body {
-  background: #0f0f0f;
-  color: #eee;
-  font-family: Arial, sans-serif;
-  padding: 20px;
+:root {
+  --bg:#0f1720; --card:#0b1220; --muted:#9fb0bf; --accent:#2b6be6; --text:#eef6fb;
 }
-
-h1, h2 {
-  text-align: center;
-}
-
-textarea {
-  width: 100%;
-  background: #1b1b1b;
-  color: #f0f0f0;
-  padding: 10px;
-  border: 1px solid #444;
-  margin-bottom: 15px;
-  font-size: 14px;
-  height: 200px;
-}
-
-button {
-  width: 100%;
-  padding: 12px;
-  background: #4a7dff;
-  border: none;
-  font-size: 16px;
-  color: white;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #3a6be0;
-}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,Segoe UI,Arial;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+.wrap{max-width:980px;margin:28px auto;padding:22px}
+h1{margin:0 0 6px;font-size:22px}
+.muted{color:var(--muted)}
+.small{font-size:12px}
+label{display:block;margin:12px 0}
+input{width:100%;padding:10px;border-radius:8px;border:1px solid #133445;background:#07121a;color:var(--text)}
+.controls{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0}
+.buttons{display:flex;gap:12px;margin:12px 0}
+button{background:var(--accent);border:none;color:white;padding:10px 14px;border-radius:8px;cursor:pointer}
+button:disabled{opacity:.5;cursor:default}
+.card{background:var(--card);padding:12px;border-radius:10px;margin-top:12px;border:1px solid #132030}
+.error{background:#2b0b0b;color:#ffdede}
+textarea{width:100%;padding:12px;border-radius:8px;border:1px solid #133445;background:#041017;color:var(--text);resize:vertical}
+pre{white-space:pre-wrap;word-break:break-word;background:#08141b;padding:10px;border-radius:8px}
