@@ -1,20 +1,58 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>TF Thread Parser</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <title>Smogon BBCode Generator — Tournament Formatter</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <main class="wrap">
+    <header>
+      <h1>Smogon BBCode Formatter</h1>
+      <p class="muted">Paste a Smogon thread (week) URL and optionally the Key OP URL to generate copy-paste-ready BBCode.</p>
+    </header>
 
-  <h1>TF Thread Parser</h1>
+    <label>Week thread URL (required)
+      <input id="threadUrl" placeholder="https://www.smogon.com/forums/threads/ndbd-i-week-one.3757015/" />
+    </label>
 
-  <textarea id="threadUrl" placeholder="Paste Smogon thread URL"></textarea>
-  <button id="runBtn">Parse Thread</button>
+    <label>Key OP URL (optional, will use team tags from this post if provided)
+      <input id="keyUrl" placeholder="https://www.smogon.com/forums/threads/ndbd-i-replays-and-usage-stats.3757120/" />
+    </label>
 
-  <h2>Output</h2>
-  <textarea id="output"></textarea>
+    <div class="controls">
+      <label><input id="optSprites" type="checkbox" checked /> Include sprites (emoji placeholders)</label>
+      <label><input id="optAutoAcronyms" type="checkbox" checked /> Auto-generate acronyms if Key OP missing</label>
+      <label><input id="optShowDebug" type="checkbox" /> Show debug JSON</label>
+    </div>
 
-  <script src="script.js"></script>
+    <div class="buttons">
+      <button id="runBtn">Generate BBCode</button>
+      <button id="copyBtn" disabled>Copy BBCode</button>
+      <button id="downloadBtn" disabled>Download .txt</button>
+    </div>
+
+    <section id="status" class="card hidden"></section>
+
+    <section id="outputCard" class="card hidden">
+      <h2>Generated BBCode (paste into Smogon)</h2>
+      <textarea id="bbOutput" rows="18" readonly></textarea>
+    </section>
+
+    <section id="errorCard" class="card hidden error">
+      <h3>Ambiguous / unmatched replays</h3>
+      <div id="errorList"></div>
+    </section>
+
+    <section id="debugCard" class="card hidden">
+      <h3>Debug JSON</h3>
+      <pre id="debugPre"></pre>
+    </section>
+
+    <footer class="muted small">Uses a public mirror fallback for fetch. For heavy/reliable use deploy a server proxy — instructions in README.</footer>
+  </main>
+
+  <script src="script.js" type="module"></script>
 </body>
 </html>
